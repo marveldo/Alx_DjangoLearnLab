@@ -9,7 +9,13 @@ from .models import Library
 from .models import Book
 from .forms import Bookform
 
-
+def register(request):
+    form = UserCreationForm()
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+    return render(request, 'relationship_app/login.html', context={'form':form})
 
 def list_books(request):
     books = Book.objects.all()
