@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import permission_required
 from .models import Library
 from .models import Book
 from .forms import Bookform
+from django.http import HttpResponseForbidden
 
 def register(request):
     form = UserCreationForm()
@@ -33,26 +34,29 @@ class UserRegisterView(CreateView):
     template_name = 'relationship_app/register.html'
     success_url = reverse_lazy('login')
 
-def is_admin(user):
-    return user.userprofile.role == 'Admin'
+
 
 
 def Admin(request):
+    if request.user.userprofile.role != 'Admin' :
+        return HttpResponseForbidden()
     return render(request, 'relationship_app/admin.html')
 
-def is_librarian(user):
-    return user.userprofile.role == 'Librarian'
+
 
 
 
 def Librarian(request):
+    if request.user.userprofile.role != 'Librarian' :
+        return HttpResponseForbidden()
     return render(request, 'relationship_app/librarian.html')
 
-def is_member(user):
-    return user.userprofile.role == 'Member'
+
 
 
 def Member(request):
+    if request.user.userprofile.role != 'Member' :
+        return HttpResponseForbidden()
     return render(request , 'relationship_app/member.html')
 
 @permission_required('relationship_app.can_add_book', raise_exception=True)
