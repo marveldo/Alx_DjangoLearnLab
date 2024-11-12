@@ -35,20 +35,6 @@ class UserRegisterView(CreateView):
     success_url = reverse_lazy('login')
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @permission_required('relationship_app.can_add_book', raise_exception=True)
 def add_book(request) :
     form = Bookform()
