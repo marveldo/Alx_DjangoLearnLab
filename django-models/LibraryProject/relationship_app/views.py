@@ -38,7 +38,7 @@ def is_admin(user):
 
 @user_passes_test(is_admin)
 def Admin(request):
-    return render(request, 'relationship_app/admin.html')
+    return render(request, 'relationship_app/a]Admin.html')
 
 def is_librarian(user):
     return user.userprofile.role == 'Librarian'
@@ -46,14 +46,14 @@ def is_librarian(user):
 
 @user_passes_test(is_librarian)
 def Librarian(request):
-    return render(request, 'relationship_app/librarian.html')
+    return render(request, 'relationship_app/Librarian.html')
 
 def is_member(user):
     return user.userprofile.role == 'Member'
 
 @user_passes_test(is_member)
 def Member(request):
-    return render(request , 'relationship_app/member.html')
+    return render(request , 'relationship_app/Member.html')
 
 @permission_required('relationship_app.can_add_book', raise_exception=True)
 def add_book(request) :
