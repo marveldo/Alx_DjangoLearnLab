@@ -37,27 +37,17 @@ class UserRegisterView(CreateView):
 
 
 
-def Admin(request):
-    if request.user.userprofile.role != 'Admin' :
-        return HttpResponseForbidden()
-    return render(request, 'relationship_app/admin.html')
 
 
 
 
 
-def Librarian(request):
-    if request.user.userprofile.role != 'Librarian' :
-        return HttpResponseForbidden()
-    return render(request, 'relationship_app/librarian.html')
 
 
 
 
-def Member(request):
-    if request.user.userprofile.role != 'Member' :
-        return HttpResponseForbidden()
-    return render(request , 'relationship_app/member.html')
+
+
 
 @permission_required('relationship_app.can_add_book', raise_exception=True)
 def add_book(request) :
