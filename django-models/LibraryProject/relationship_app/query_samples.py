@@ -1,4 +1,4 @@
-from .models import Author , Book , Library
+from .models import Author , Book , Library , Librarian
 author_name = 'John Doe'
 author = Author.objects.get(name=author_name)
 
@@ -9,5 +9,5 @@ library = Library.objects.get(name=library_name)
 libraries_books =   library.books.all()
 print(library)
 print(libraries_books)
-librarian = library.librarian
+librarian = Librarian.objects.get(library=library)
 print(librarian)
