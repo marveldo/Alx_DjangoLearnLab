@@ -6,5 +6,5 @@ def is_librarian(user):
     return user.userprofile.role != 'Librarian' 
 
 @user_passes_test(is_librarian)
-def Librarian(request):
-    return render(request, 'relationship_app/librarian.html')
+def librarian_view(request):
+    return render(request, 'relationship_app/librarian_view.html')
