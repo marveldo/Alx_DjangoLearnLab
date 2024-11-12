@@ -7,7 +7,7 @@ class Author(models.Model):
     name = models.CharField(max_length=150)
 
     def __str__(self) -> str:
-        return str(self.name)
+        return self.name
         
 class Book(models.Model):
     title = models.CharField(max_length=150)
@@ -21,21 +21,21 @@ class Book(models.Model):
         ]
     
     def __str__(self) -> str:
-        return str(self.title)
+        return self.title
 
 class Library(models.Model):
     name = models.CharField(max_length=150)
     books = models.ManyToManyField(Book)
 
     def __str__(self) -> str:
-        return str(self.name)
+        return self.name
 
 class Librarian(models.Model):
     name = models.CharField(max_length=150)
     library = models.OneToOneField(Library , blank=True , null=True , on_delete=models.SET_NULL)
 
     def __str__(self) -> str:
-        return str(self.name)
+        return self.name
 
 class Rolechoices(models.TextChoices):
     ADMIN = 'Admin'
@@ -47,4 +47,4 @@ class Profile(models.Model):
     role = models.CharField(max_length=300, choices=Rolechoices.choices)
 
     def __str__(self):
-        return str(self.user.username)
+        return self.user.username
