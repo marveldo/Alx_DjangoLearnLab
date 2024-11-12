@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 class Author(models.Model):
     name = models.CharField(max_length=150)
 
+    def __str__(self) -> str:
+        return str(self.name)
+        
 class Book(models.Model):
     title = models.CharField(max_length=150)
     author = models.ForeignKey(Author , blank=True , null=True ,on_delete=models.SET_NULL)
@@ -16,14 +19,23 @@ class Book(models.Model):
             ("can_change_book", "Can change book"),
             ("can_delete_book", "Can delete book"),
         ]
+    
+    def __str__(self) -> str:
+        return str(self.title)
 
 class Library(models.Model):
     name = models.CharField(max_length=150)
     books = models.ManyToManyField(Book)
 
+    def __str__(self) -> str:
+        return str(self.name)
+
 class Librarian(models.Model):
     name = models.CharField(max_length=150)
     library = models.OneToOneField(Library , blank=True , null=True , on_delete=models.SET_NULL)
+
+    def __str__(self) -> str:
+        return str(self.name)
 
 class Rolechoices(models.TextChoices):
     ADMIN = 'Admin'
@@ -33,3 +45,6 @@ class Profile(models.Model):
     
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     role = models.CharField(max_length=300, choices=Rolechoices.choices)
+
+    def __str__(self):
+        return str(self.user.username)
