@@ -33,15 +33,15 @@ class UserRegisterView(CreateView):
     success_url = reverse_lazy('login')
 
 @user_passes_test(lambda user: user.profile.role == 'Admin')
-def admin_view(request):
+def Admin(request):
     return render(request, 'relationship_app/admin.html')
 
 @user_passes_test(lambda user : user.profile.role == 'Librarian' )
-def librarian_view(request):
+def Librarian(request):
     return render(request, 'relationship_app/librarian.html')
 
 @user_passes_test(lambda user : user.profile.role == 'Member')
-def member_view(request):
+def Member(request):
     return render(request , 'relationship_app/member.html')
 
 @permission_required('relationship_app.can_add_book', raise_exception=True)
