@@ -32,15 +32,15 @@ class UserRegisterView(CreateView):
     template_name = 'relationship_app/register.html'
     success_url = reverse_lazy('login')
 
-@user_passes_test(lambda user: user.profile.role == 'Admin')
+@user_passes_test(lambda user: user.userprofile.role == 'Admin')
 def Admin(request):
     return render(request, 'relationship_app/admin.html')
 
-@user_passes_test(lambda user : user.profile.role == 'Librarian' )
+@user_passes_test(lambda user : user.userprofile.role == 'Librarian' )
 def Librarian(request):
     return render(request, 'relationship_app/librarian.html')
 
-@user_passes_test(lambda user : user.profile.role == 'Member')
+@user_passes_test(lambda user : user.userprofile.role == 'Member')
 def Member(request):
     return render(request , 'relationship_app/member.html')
 
