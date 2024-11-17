@@ -3,7 +3,7 @@ from django.contrib.auth.models import  BaseUserManager , AbstractUser
 # Create your models here.
 
 
-class CustomUsermanager(BaseUserManager):
+class CustomUserManager(BaseUserManager):
 
     def create_user(self, email, password=None , **other_fields) :
         if not email :
@@ -31,7 +31,7 @@ class CustomUser(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
-    objects = CustomUsermanager()
+    objects = CustomUserManager()
 # Create your models here.
 class Book(models.Model):
     title = models.CharField(max_length=200)
