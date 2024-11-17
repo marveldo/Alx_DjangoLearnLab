@@ -38,3 +38,12 @@ class Book(models.Model):
     author = models.CharField(max_length=100)
     publication_year = models.IntegerField()
 
+    permissions = [
+            ("can_view", "Can View Author"),
+            ("can_create", "Can Create author"),
+            ("can_edit", "Can Edit author"),
+            ("can_delete", "Can Delete author"),
+            
+        ]
+    
+
