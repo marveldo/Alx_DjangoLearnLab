@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import permission_required
 from django.http import HttpResponse
 
 # Create your views here.
+listed = ["book_list", "books"]
 @permission_required('relationship_app.can_view', raise_exception=True)
 def view_author(request):
     return HttpResponse('Hello there')
