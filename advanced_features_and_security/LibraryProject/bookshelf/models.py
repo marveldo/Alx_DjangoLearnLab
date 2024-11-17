@@ -23,7 +23,7 @@ class CustomUsermanager(BaseUserManager):
         return self.create_user(email=email, password=password , **other_fields)
 
 
-class User(AbstractUser):
+class CustomUser(AbstractUser):
     date_of_birth = models.DateField(blank = True , null=True)
     profile_photo = models.ImageField(blank = True , null=True , upload_to='images')
 
