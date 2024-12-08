@@ -6,7 +6,7 @@ from rest_framework import status
 from rest_framework.filters import SearchFilter , OrderingFilter
 from django_filters import rest_framework as filters 
 # Create your views here.
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated ,IsAuthenticated
 
 class ListView(generics.ListAPIView):
     # A listView to list all Books
