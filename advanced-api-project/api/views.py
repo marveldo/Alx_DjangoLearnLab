@@ -3,7 +3,7 @@ from rest_framework import generics
 from .serializers import Book ,BookSerializer 
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.filters import SearchFilter , OrderingFilter
+from rest_framework import filters
 from django_filters import rest_framework as filters 
 # Create your views here.
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated ,IsAuthenticated
@@ -12,7 +12,7 @@ class ListView(generics.ListAPIView):
     # A listView to list all Books
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    filter_backends = [SearchFilter , OrderingFilter, filters.DjangoFilterBackend]
+    filter_backends = [filters.SearchFilter , filters.OrderingFilter, filters.DjangoFilterBackend]
     search_fields = ['title', 'author__name']  
     ordering_fields = ['title', 'publication_year'] 
 
