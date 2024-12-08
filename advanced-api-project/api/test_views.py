@@ -2,10 +2,13 @@ from django.test import TestCase
 from rest_framework.test import APITestCase
 from .models import Author , Book
 from rest_framework import status
+from django.contrib.auth.models import User
 
 class TestBooks(APITestCase):
 
     def setUp(self):
+        self.user = User.objects.create_user(username='testuser', password='password123')
+        self.client.login(username='testuser', password='password123')
         self.author = Author.objects.create(name = 'John Doe')
         self.book = Book.objects.create(title="Test Book", author=self.author, publication_year=2023)
         self.list_url = "/api/books/"
