@@ -1,7 +1,8 @@
 from django.test import TestCase
+from rest_framework.test import APITestCase
 from .models import Author , Book
 
-class TestBooks(TestCase):
+class TestBooks(APITestCase):
 
     def setUp(self):
         self.author = Author.objects.create(name = 'John Doe')
